@@ -1,0 +1,74 @@
+body { 
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	color: #666;
+	background: #fff;
+	margin: 0px; /*У боди автоматически есть, надо бы убрать для красивостей*/
+ }
+
+ h1 {
+ 	font-size: 32px;
+ 	font-weight: normal;
+ 	color: #000;
+ 	margin: 0px;
+ 	padding: 15px;
+ }
+
+ p {
+ 	margin: 0px;
+ 	padding: 10px;
+ }
+
+ .wrap {
+ 	max-width: 960px;
+ 	margin: auto; /*Обеспечивает равномерные края если дочерний намного меньше родительского*/
+ 	padding: 10px;
+ }
+
+ .zebra {
+ 	background-color: mistyrose;
+ }
+
+ #header {
+ 	padding: 10px/*сверхуснизу*/ 0px;/*слевасправа*/
+ 	color: #fff;
+ }
+
+ #header,
+ #footer {
+ 	background: purple;	
+ }
+
+/*----------------------------Меню-----------------------------*/
+
+ #menu {
+ 	background: plum;
+ 	padding: 5px 0px; /*Потому что дисплей инлайн всё убирает*/
+ }
+
+ #menu ul {
+ 	margin: 0; /*Потому что делает отступы ненужные*/
+ 	padding: 10px;
+ }
+
+ #menu ul li {
+ 	display: inline;
+ 	/*И надо задать паддинги, флоат всё плохо сделал, даже цвет пропал*/
+ 	padding: 15px;
+ }
+
+ .content-div {
+ 	background: thistle;
+ 	padding: 30px 0px;
+ }
+
+ #content2 {
+ 	background-color: mistyrose;
+ }
+
+ #footer {
+ 	padding: 30px 0px;
+ 	color: #fff;
+ }
+
+

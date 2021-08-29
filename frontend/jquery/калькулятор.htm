@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Примитивный калькулятор</title>
+	<script>
+		window.onload = function() {
+			document.f.x.focus();
+			document.f.x.onkeyup = function() { calc()};
+			document.f.y.onkeyup = function() { calc()};
+			document.f.operation.onchange = function() { calc()};
+		};
+		//Лоад хуже реди тем, что происходит позднее всего - картинки ждёт и такое
+		//можем сделать так, в итоге можем к элементам просто по именам обращаться
+		function calc() {
+			with(document.f) {
+				if ((x.value !=='') && (y.value!=='')) //!= исплючает ноль
+					//если поля операндов не пусты:
+					{
+						var arg1 = parseFloat(x.value);
+						var arg2 = parseFloat(y.value); //если не может то нан
+						if (isNaN(arg1) || isNaN(arg2))
+							//если что-то не удалось привести к числовому виду
+							{
+								console.log('incorrect data');
+								z.value = '';
+								//TASKвывести сообщение о некорректный(без джейквери надо) однострочое текстовое поле закамуфлированое рамочко 
+							} else {
+								//эвал делает то, что написано в строке, частью кода
+								var result = eval(arg1 + 
+									operation.options[operation.selectedIndex].text + 
+									arg2);
+								z.value = result;
+
+								//если после чисел в поле написали текст оно без такого всё равно считает:
+								// x.value = arg1;
+								// y.value = arg2;
+								//но тут проблемы с е и точками и подобное
+							}
+					} else {
+						z.value = '';
+					}
+			}
+		};
+	</script>
+</head>
+<body>
+	<form name="f">
+		<input type="text" name="x" id="x" />
+		<select name="operation">
+			<option value="+"  selected="selected" >+</option>
+			<!--селектед внешне не видно, но сценарий не увидит, если не поставить-->
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text" name="y" id="y" /> =
+		<input type="text" name="z" id="z" readonly="readonly" />
+	</form>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Кофеёчки</title>
+		<style>
+			body, input { font-family: Arial, serif; font-size: 14px;}
+			h1 { font-size: 26px; font-weight: normal; }	
+		</style>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script> 
+			$(document).ready ( function() {
+				//Найду массивы обжарок и всякого
+				var biblioNodes = $('#list span');
+				biblioNodes.sort();
+				var roastsArr = new Array();
+				var percentArr = new Array();
+				var countryArr = new Array();
+
+				for (var i=0; i<biblioNodes.length;i++) {
+					var myClasses = biblioNodes[i].classList;
+					roastsArr[i] = myClasses[0];
+					percentArr[i] = myClasses[1];
+					countryArr[i] = myClasses[2];
+				}
+
+				//Удалю повторяющиеся значения
+				roastsArr.sort();
+				percentArr.sort();
+				countryArr.sort();
+
+				var roastsArrTemp = new Array();
+				roastsArrTemp[0] = roastsArr[0];
+				var j = 1;
+				for (var i=1; i<roastsArr.length;i++) {
+					if (roastsArr[i] != roastsArr[[i-1]]) {
+						roastsArrTemp[j] = roastsArr[i];
+						j = j + 1;
+					}
+				}
+				roastsArr = roastsArrTemp;
+
+				var percentArrTemp = new Array();
+				percentArrTemp[0] = percentArr[0];
+				var j = 1;
+				for (var i=1; i<percentArr.length;i++) {
+					if (percentArr[i] != percentArr[[i-1]]) {
+						percentArrTemp[j] = percentArr[i];
+						j = j + 1;
+					}
+				}
+				percentArr = percentArrTemp;
+
+				var countryArrTemp = new Array();
+				countryArrTemp[0] = countryArr[0];
+				var j = 1;
+				for (var i=1; i<countryArr.length;i++) {
+					if (countryArr[i] != countryArr[[i-1]]) {
+						countryArrTemp[j] = countryArr[i];
+						j = j + 1;
+					}
+				}
+				countryArr = countryArrTemp;
+
+				//Создам штуки для всякого
+				//прожарка
+				$('.roast').before('<h3>Степень обжарки</h3>\n');
+				$('.roast').append('<option selected="selected" value="-">-</option>\n');
+				for (var i=0; i<roastsArr.length;i++)
+					$('.roast').append('<option value="' +roastsArr[i] + '">' + roastsArr[i] + '</option>\n');
+
+
+				//Процент арабики
+				$('.percent').before('<h3>Процент арабики(остальное - робуста)</h3>\n');
+				$('.percent').append('<option selected="selected" value="-">-</option>\n');
+				for (var i=0; i<percentArr.length;i++)
+					$('.percent').append('<option value="' + percentArr[i] + '">' + percentArr[i] + '</option>\n');
+
+
+				//Ии страна
+				$('.country').before('<h3>Страна производства</h3>\n');
+				$('.country').append('<option selected="selected" value="-">-</option>\n');
+				for (var i=0; i<countryArr.length;i++)
+					$('.country').append('<option value="' + countryArr[i] + '">' + countryArr[i] + '</option>\n');
+
+
+				//И теперь разная магия выбора
+				$('#roast').change( function() {
+					roastsVal = document.getElementById('roast').value;	
+					percentVal = document.getElementById('percent').value;
+					countryVal = document.getElementById('country').value;
+					$('#list li').fadeOut('fast');
+
+					if (percentVal == '-' && countryVal == '-') {
+						$('.' + roastsVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-' && countryVal == '-') {
+						$('.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-' && roastsVal == '-') {
+						$('.' + countryVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-') {
+						$('.' + roastsVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else if (countryVal == '-') {
+						$('.' + roastsVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-') {
+						$('.' + countryVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal != '-' && countryVal != '-' && roastsVal != '-'){
+						$('.' + roastsVal + '.' + percentVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else {
+						console.log('Unexpected!!');
+					};
+				});
+				$('#percent').change( function() {
+					roastsVal = document.getElementById('roast').value;	
+					percentVal = document.getElementById('percent').value;
+					countryVal = document.getElementById('country').value;
+					$('#list li').fadeOut('fast');
+
+					if (percentVal == '-' && countryVal == '-') {
+						$('.' + roastsVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-' && countryVal == '-') {
+						$('.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-' && roastsVal == '-') {
+						$('.' + countryVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-') {
+						$('.' + roastsVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else if (countryVal == '-') {
+						$('.' + roastsVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-') {
+						$('.' + countryVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal != '-' && countryVal != '-' && roastsVal != '-'){
+						$('.' + roastsVal + '.' + percentVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else {
+						console.log('Unexpected!!');
+					};
+				});
+				$('#country').change( function() {
+					roastsVal = document.getElementById('roast').value;	
+					percentVal = document.getElementById('percent').value;
+					countryVal = document.getElementById('country').value;
+					$('#list li').fadeOut('fast');
+
+					if (percentVal == '-' && countryVal == '-') {
+						$('.' + roastsVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-' && countryVal == '-') {
+						$('.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-' && roastsVal == '-') {
+						$('.' + countryVal).parent('li').fadeIn('fast');
+					} else if (percentVal == '-') {
+						$('.' + roastsVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else if (countryVal == '-') {
+						$('.' + roastsVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (roastsVal == '-') {
+						$('.' + countryVal + '.' + percentVal).parent('li').fadeIn('fast');
+					} else if (percentVal != '-' && countryVal != '-' && roastsVal != '-'){
+						$('.' + roastsVal + '.' + percentVal + '.' + countryVal).parent('li').fadeIn('fast');
+					} else {
+						console.log('Unexpected!!');
+					};
+				});
+				//----- Показать всё
+				$('#resetButton').click( function() {
+					console.log('pressed');
+					roastsEl = document.getElementById('roast');	
+					roastsEl.value = '-';
+					percentEl = document.getElementById('percent');
+					percentEl.value = '-';
+					countryEl = document.getElementById('country');
+					countryEl.value = '-';
+					$('#list li').fadeIn('fast');
+				});
+			});	// $(document).ready
+		</script>
+	</head>
+	<body>
+
+		<h1>Кофеёчки</h1>
+		<input type="reset" value="Показать все" id="resetButton" />
+		<select id='roast' class='roast'></select>
+		<select id='percent' class='percent'></select>
+		<select id='country' class='country'></select>
+
+
+		<ul id="list" >
+			<!-- обжарка %арабики страна-->
+			<li><span class="средняя 100 Италия" >Lavazza Tierra Selection</span></li>
+			<li><span class="средняя 80 Италия" >Lavazza Crema e Aroma</span></li>
+			<li><span class="средняя 60 Индонезия" >Jardin Crema</span></li>
+			<li><span class="темная 100 Бразилия" >Jardin Espresso Di Milano</span></li>
+			<li><span class="средняя 20 Италия" >Lavazza Gusto Pieno</span></li>
+			<li><span class="легкая 50 Нидерланды" >Pelican Rouge Evaristo</span></li>
+			<li><span class="средняя 0 Нидерланды ">Noir Classico</span></li>
+		</ul>
+
+	</body>
+</html> 

@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Проверка пароля</title>
+    <style>
+      .red {color: red;}
+      .green {color: springgreen;}
+    </style>
+    <script src='https://code.jquery.com/jquery-1.11.2.js'></script>
+    <script>
+    //---------------------------------------
+    // // Обработчики событий в стиле классического JavaScript:
+    //   window.onload = function() {
+    //     //document.f.pwd.focus();
+
+    //     document.getElementById('pwd1').onkeyup = function() {  действия...  }
+    //     //ИЛИ:
+    //     document.f.pwd1.onkeyup = function() { /* действия... */ }
+    //   };
+    // //---------------------------------------
+    // // Обработчики событий в стиле JQuery:
+    //Лучше это, потому что реди.
+      $(document).ready ( function() {
+        // document.f.pwd.focus(); 
+        // или то же самое:
+        $('#pwd').focus();
+        $('input[required="required"]').after(' *');
+
+        //---------------------
+
+        //---------------------Обработчик изменения в поле пароля-----------------------------
+        $('#pwd').keyup(function() {
+          var value = $(this).val();
+          var msg = $('#pwdMsg');
+          var recs = $('#pwdMsgRecs');
+          var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/;
+          var reNum = /\d/;
+          var reLo = /[a-z]/;
+          var reUp = /[A-Z]/;
+          //Пустоту обработаем в основном поле 
+          if(value == '') {
+            msg.text('');
+            return
+          };
+
+          if (re.test(value)) {
+            $('#pwdRegExp').fadeOut('slow');
+            $('#pwd1').prop('disabled', false);
+          }
+          else {
+            $('#pwdRegExp').fadeIn('slow');
+            $('#pwd1').prop('disabled', true);
+          }
+
+          //Сила пароля: 
+          var numNum = value.split(reNum).length - 1;
+          var loNum = value.split(reLo).length - 1;
+          var upNum = value.split(reUp).length - 1;
+
+          if (
+            numNum >= 3 &&
+            loNum >= 3 &&
+            upNum >= 3
+          ) {
+            msg.text('Пароль сильный').css('color', 'springgreen');
+          } else if (
+            numNum >= 2 &&
+            loNum >= 2 &&
+            upNum >= 2
+          ) {
+            msg.text('Пароль средний, добавьте:').css('color', 'orange');
+          } else {
+            msg.text('Пароль слабый, добавьте:').css('color', 'red');
+          }
+
+          if (numNum < 3)
+              $('<p>цифр</p>').appendTo('#pwdMsg');
+            if (loNum < 3)
+              $('<p>латинских букв нижнего регистра</p>').appendTo('#pwdMsg');
+            if (upNum < 3)
+              $('<p>латинских букв верхнего регистра</p>').appendTo('#pwdMsg');
+        });
+
+
+        //---------------------Обработчик изменения в поле повтора пароля-----------------------------
+        //Поле повтора пароля текст про совпадение 
+        $('#pwd1').keyup(function() {
+          var value1 = $(this).val();
+          var msg1 = $('#pwdMsg1');
+          var compatIndex = $('#pwd').val().indexOf(value1);
+
+          if(value1 == '') {
+            msg1.text('');
+            return
+          };
+
+          if (compatIndex == 0 && $('#pwd').val() != value1) {
+            msg1.text('Пока повтор правильный').removeClass('red green');
+            return
+          };
+          if (compatIndex != 0) {
+            msg1.text('Повтор неправильный').removeClass('green').addClass('red');
+            return
+          };
+          if (compatIndex == 0) {
+            msg1.text('✓').removeClass('red').addClass('green');
+            //$(this).blur();
+            //или, если есть следующее поле:
+            $('#next').focus();
+            return
+          };
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form name="f">
+      <p>
+        Введите пароль:
+        <br />
+        <input type="password" name="pwd" id="pwd" required="required" /> 
+        <span id="pwdMsg"></span>
+        <br />
+        <span id="pwdMsgRecs"></span>
+        <br />
+        <span id="pwdRegExp">Пароль должен содержать хотя бы одну латинскую букву в нижнем регистре, одну латинскую в верхнем регистре и хотя бы одну цифру</span>
+      </p>
+      <p>
+        Повторите пароль:
+        <br />
+        <input type="password" name="pwd1" id="pwd1" required="required" disabled="disabled" /> 
+        <span id="pwdMsg1"></span>
+      </p>
+      <p>
+        Следующее поле:
+        <br />
+        <input type="text" name="next" id="next" /> 
+      </p>
+      <p><input type="submit" value="Отправить" />
+    </form>
+  </body>
+</html>

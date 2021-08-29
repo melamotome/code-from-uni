@@ -1,0 +1,64 @@
+/*------------------General------------------*/
+
+body { 
+	background-color: Lavender; 
+	font-family: 'Quicksand', sans-serif;
+	color: #222;
+	font-size: 16px;
+	margin: 0px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: normal;
+	color: #000;
+	margin: 0px;
+}
+
+p {}
+
+#menu { 
+	text-align: center;
+	float: left;
+	margin: 0px;
+	margin-top: 40px;
+	margin-left: 40px;
+}
+
+/*------------------The first page------------------*/
+ 
+#words ul{ 
+ 	margin: 30px;
+}
+
+#words ul li{ 
+	display: inline;
+	margin-right: 40px;
+	list-style-type: none;
+}
+
+#thePic { 
+	float: left;
+	margin: 40px;
+	text-align: center;
+}
+
+/*------------------About------------------*/
+
+#menu_about { 
+	text-align: center;
+	float: left;
+	margin: 0px;
+	margin-top: 40px;
+	margin-left: 40px;
+}
+
+/*------------------Links------------------*/
+
+#activelink { color: grey; }
+
+a:link  { text-decoration: none; color: #222;}
+a:visited { color: #222; }
+a:hover {  }
+a:active {  }
+a:focus {  }

@@ -1,0 +1,120 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>Макет 1</title>
+<style type="text/css">
+
+body {
+	background: url(bg.jpg) no-repeat scroll center;
+	margin: 0px;
+	color: #111;
+	font-size: 16px;
+}
+  
+#container {
+	max-width: 930px;
+ 	margin: auto; 
+ 	background: white;
+}
+
+#header {
+	background: #111;
+	color: white;
+	max-width: 930px; min-height: 100px;
+	padding-top: 10px; padding-left: 20px;
+}
+	
+#content {
+	padding: 20px;
+}	
+
+#menu {
+	background: coral;
+}	
+	
+#menu ul {
+	margin: 0px;
+	padding: 5px 5px 5px 40px;
+}
+	
+#menu ul li {
+	display: inline;
+ 	padding: 5px 15px;
+}
+	
+#menu a {
+	text-decoration: none;
+	color: #111;
+}
+	
+#menu li:hover {
+	background: tomato;
+}	
+	
+.contentBlock {
+	border-style: solid;
+	border-color: lightgray;
+	border-radius: 10px;
+	border-width: 1px;
+	border-right-color: darkgray; border-right-width: 2px;
+	border-bottom-color: darkgray; border-bottom-width: 2px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+	
+.contentBlock h1 {
+	margin: 0px;
+	font-size: 30px;
+	background: lightgrey;
+	text-indent: 20px;
+}
+
+.contentBlock p {
+	padding: 0px 20px;
+}
+
+
+</style>
+</head>
+
+<body>
+	<div id="container">
+	 	<div id="header">
+	 		зона шапки
+	 	</div>
+	 	<div id="menu">
+	 		<ul>
+	 			<li><a href="#">ссылка1</a></li>
+				<li><a href="#">ссылка2</a></li>
+				<li><a href="#">ссылка3</a></li>
+	   		</ul>
+	  	</div>
+	  	<div id="content">
+	   		<div class="contentBlock">
+	    		<h1>Заголовок 1-го блока</h1>
+	    		<p>Здесь должен быть текст 1-го блока...</p> 
+				<p>Здесь должен быть текст 1-го блока...</p>
+				<p>Здесь должен быть текст 1-го блока...</p>
+				<p>Здесь должен быть текст 1-го блока...</p>
+				<p>Здесь должен быть текст 1-го блока...</p>
+	   		</div>
+	   		<div class="contentBlock">
+	    		<h1>Заголовок 2-го блока</h1>
+	    		<p>Здесь должен быть текст 2-го блока...</p>
+				<p>Здесь должен быть текст 2-го блока...</p>
+				<p>Здесь должен быть текст 2-го блока...</p>
+				<p>Здесь должен быть текст 2-го блока...</p>
+				<p>Здесь должен быть текст 2-го блока...</p>
+	   		</div>
+	   		<div class="contentBlock">
+	   			<h1>Заголовок 3-го блока</h1>
+	    		<p>Здесь должен быть текст 3-го блока...</p>
+				<p>Здесь должен быть текст 3-го блока...</p>
+				<p>Здесь должен быть текст 3-го блока...</p>
+				<p>Здесь должен быть текст 3-го блока...</p>
+				<p>Здесь должен быть текст 3-го блока...</p>
+	   		</div>  
+	   	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+body { 
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	color: #222;
+	background: #fff;
+	margin: 0px;
+ }
+
+p {
+	margin: 0px;
+	padding: 10px 0px;
+}
+
+h2, h3 {
+	text-transform: uppercase;
+ 	font-weight: 100;
+ 	color: #000;
+ 	margin: 0px 0px 10px 0px;
+ 	padding: 10px 0px;
+}
+
+h2 {
+	font-size: 24px;
+ 	border-bottom: solid 1px;
+}
+
+h3 {
+	padding: 40px 0px 5px 0px; 
+	font-size: 18px;
+}
+
+strong {
+	background-color: coral;
+	color: white;
+	padding: 0px 5px;
+}
+
+#header {
+	background: cornflowerblue;
+	color: white;
+}
+
+#decor {
+	background: url(bg.jpg) no-repeat scroll center;
+	background-size: cover;
+	min-height: 200px;
+	text-align: center;
+	white-space: nowrap;
+	line-height: 200px;
+}
+
+#nav, #footer {
+	background: royalblue;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+}
+
+.menu a {
+	padding: 5px 10px;
+	text-decoration: none;
+	color: white;
+}
+
+.menu a:hover {
+	text-decoration: underline;
+}
+
+#footer a {
+	text-decoration: none;
+	color: white;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+.wrap {
+	max-width: 960px;
+	margin: auto; 
+	padding: 10px;
+}
+
+.section {
+	background: white;
+}
+
+#div1, #div2, #div3, #div4, #div5 {
+	padding: 30px 0px;
+}
+
+#div2 {
+	background: wheat;
+}
+
+#div4 {
+ 	background: lightsteelblue;
+}

@@ -1,5 +1,5 @@
 # This is a repository for the code written by me while studying in university
-## Most of it is from years 2017-2019.
+## Most of it is from years 2017-2019
 
 
 ["Frontend"](https://github.com/melamotome/code-from-uni/tree/main/frontend) folder contains simple (often one-page) websites made while learning HTML and CSS, also in-class and home work made while learning Javascript and its JQuery Library.
